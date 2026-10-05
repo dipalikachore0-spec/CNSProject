@@ -1,67 +1,64 @@
-# 🔐 Secure Authenticator
+# Secure Authenticator
 
-A desktop-based authentication and licensing application developed in **Python using Tkinter**.
+A desktop-based authentication and licensing application developed in Python using Tkinter.
 
 Secure Authenticator is a college mini-project that demonstrates how authentication and software licensing concepts can be implemented in a Python desktop application using randomly generated security tokens, SHA-256 hashing, daily authentication, and hardware-based permanent activation.
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
-**Secure Authenticator** provides a simple authentication workflow for a desktop application.
+Secure Authenticator provides a simple authentication workflow for a desktop application.
 
 When the application starts, it checks whether:
 
-1. The device has already been **permanently activated**, or
-2. The device has already been **authenticated for the current day**.
+1. The device has already been permanently activated, or
+2. The device has already been authenticated for the current day.
 
-If authentication is required, the application generates a random security token and calculates a six-digit authentication passkey using **SHA-256 hashing**.
+If authentication is required, the application generates a random security token and calculates a six-digit authentication passkey using SHA-256 hashing.
 
 The user must enter the correct passkey to access the main application.
 
-The project is designed primarily for **educational and academic purposes** and demonstrates several Python programming concepts, including GUI development, file handling, cryptographic hashing, random data generation, hardware identification, and event-driven programming.
+This project is intended primarily for educational and academic purposes. It demonstrates GUI development, file handling, cryptographic hashing, random data generation, hardware identification, and event-driven programming in Python.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🔐 Daily authentication
-- 🎲 Dynamically generated security tokens
-- 🔢 Six-digit authentication passkey
-- #️⃣ SHA-256 based passkey calculation
-- 💻 Hardware-based permanent activation
-- 🔑 Predefined master activation keys
-- 📁 Local license file storage
-- 📅 Daily authentication status tracking
-- 🖥️ Tkinter graphical user interface
-- 🌙 Dark-themed user interface
-- ⌨️ Keyboard support using the `Enter` key
-- ✅ Authentication success messages
-- ❌ Authentication failure messages
-- 📄 Automatic creation of authentication files
-- 📄 Automatic creation of license files
-- 🚫 No external Python packages required
+- Daily authentication using a dynamically generated security token
+- Six-digit authentication passkey generation
+- SHA-256 based passkey calculation
+- Hardware-based permanent activation
+- Predefined master activation keys
+- Local license file storage
+- Daily authentication status tracking
+- Tkinter-based graphical user interface
+- Dark-themed user interface
+- Keyboard support using the `Enter` key
+- Authentication success and failure messages
+- Automatic creation of authentication and license files
+- No external Python packages required
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 | Technology | Purpose |
 |---|---|
-| **Python 3** | Main programming language |
-| **Tkinter** | Graphical user interface |
-| **hashlib** | SHA-256 hashing |
-| **uuid** | Hardware identifier generation |
-| **datetime** | Daily authentication tracking |
-| **random** | Random security token generation |
-| **string** | Character generation |
-| **os** | File and operating-system operations |
+| Python 3 | Main programming language |
+| Tkinter | Graphical user interface |
+| hashlib | SHA-256 hashing |
+| uuid | Hardware identifier generation |
+| datetime | Daily authentication tracking |
+| random | Random security token generation |
+| string | Character generation |
+| os | File and operating system operations |
 
-> **External dependencies:** None
+No external Python packages are required.
 
 ---
 
-## 📋 Requirements
+## Requirements
 
 The project requires:
 
@@ -82,25 +79,23 @@ python3 --version
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 Secure-Authenticator/ │ ├── main.py ├── README.md │ ├── screenshots/ │ ├── authentication.jpeg │ ├── authenticationsuccess.png │ └── mainapplication.png │ ├── authstatus.txt └── applicense.lic
 
 
-### Automatically Generated Files
-
-The following files are created automatically by the application:
+The following files are generated automatically by the application:
 
 authstatus.txt applicense.lic
 
 
-These files do **not** need to be created manually.
+These files do not need to be created manually.
 
 ---
 
-# 🚀 Installation
+## Installation
 
-## 1. Clone the Repository
+### 1. Clone the Repository
 
 git clone <YOURGITHUBREPOSITORY_URL>
 
@@ -110,47 +105,57 @@ Navigate to the project directory:
 cd Secure-Authenticator
 
 
----
+### 2. Run the Application
 
-## 2. Run the Application
-
-Run:
+Run the following command:
 
 python main.py
 
 
-Or, depending on your operating system:
+On some systems, use:
 
 python3 main.py
 
 
 ---
 
-# 🔄 Application Workflow
+## Application Workflow
 
 The application follows the authentication workflow below:
 
-┌──────────────────┐ │ Start Application│ └────────┬─────────┘ │ ▼ ┌─────────────────────┐ │ Check Permanent │ │ License │ └─────────┬───────────┘ │ ┌─────────┴─────────┐ │ │ Yes No │ │ ▼ ▼ ┌───────────────┐ ┌────────────────────┐ │ Main │ │ Check Today's │ │ Application │ │ Authentication │ └───────────────┘ └─────────┬──────────┘ │ ┌────────┴────────┐ │ │ Yes No │ │ ▼ ▼ ┌───────────────┐ ┌─────────────────┐ │ Main │ │ Generate Random │ │ Application │ │ Security Token │ └───────────────┘ └────────┬────────┘ │ ▼ ┌─────────────────┐ │ Calculate │ │ Six-Digit Key │ └────────┬────────┘ │ ▼ ┌─────────────────┐ │ Display │ │ Authentication │ │ Window │ └────────┬────────┘ │ ▼ ┌─────────────────┐ │ User Enters │ │ Passkey │ └────────┬────────┘ │ ┌───────────┴───────────┐ │ │ Valid Invalid │ │ ▼ ▼ ┌─────────────────┐ ┌───────────────┐ │ Save Today's │ │ Access Denied │ │ Authentication │ │ │ └────────┬────────┘ └───────────────┘ │ ▼ ┌─────────────────┐ │ Main Application │ └─────────────────┘
+flowchart TD A[Start Application] --> B{Permanent License Valid?}
+
+B -->|Yes| G[Main Application] B -->|No| C{Authenticated Today?}
+
+C -->|Yes| G C -->|No| D[Generate Security Token]
+
+D --> E[Calculate Six-Digit Passkey] E --> F[Display Authentication Window]
+
+F --> H[User Enters Passkey] H --> I{Passkey Valid?}
+
+I -->|Yes| J[Save Authentication Date] J --> G
+
+I -->|No| K[Access Denied] K --> F
 
 
 ---
 
-# 🔐 Authentication System
+## Authentication System
 
 The application provides two authentication mechanisms:
 
-1. **Daily Authentication**
-2. **Permanent Device Activation**
+1. Daily Authentication
+2. Permanent Device Activation
 
 ---
 
-## 📅 Daily Authentication
+## Daily Authentication
 
 When the application starts, it first checks whether the device has already been authenticated on the current date.
 
 If authentication has not been completed, the application generates a random security token.
 
-The token has a random length between **4 and 8 characters** and may contain:
+The token has a random length between 4 and 8 characters and may contain:
 
 - Uppercase letters
 - Lowercase letters
@@ -164,14 +169,14 @@ A7x@92
 
 The generated security token is combined with the master key and processed using SHA-256.
 
-Security Token + Master Key │ ▼ SHA-256 │ ▼ Hash Digest │ ▼ Six-Digit Passkey
+Security Token + Master Key | v SHA-256 | v Hash Digest | v Six-Digit Passkey
 
 
 The generated passkey is then used to authenticate the user.
 
 ---
 
-# 🔢 Passkey Generation
+## Passkey Generation
 
 The application generates the six-digit passkey using SHA-256 hashing.
 
@@ -186,14 +191,14 @@ passkey = str(int(hash_hex[:8], 16) % 1000000).zfill(6)
 
 The generated result is always a six-digit numeric value.
 
-### Calculation
+### Calculation Process
 
-Security Token + Master Key │ ▼ SHA-256 │ ▼ Hash Digest │ ▼ First 8 Hex Characters │ ▼ Integer Conversion │ ▼ Modulo 1,000,000 │ ▼ Six-Digit Passkey
+Security Token + Master Key | v SHA-256 | v Hash Digest | v First 8 Hex Characters | v Integer Conversion | v Modulo 1,000,000 | v Six-Digit Passkey
 
 
 ---
 
-# 📅 Daily Authentication Storage
+## Daily Authentication Storage
 
 After successful authentication, the current date is stored in:
 
@@ -211,7 +216,7 @@ When the date changes, authentication is required again unless the device has be
 
 ---
 
-# 💻 Permanent Device Activation
+## Permanent Device Activation
 
 The application also supports permanent device activation through predefined master activation keys.
 
@@ -222,7 +227,7 @@ uuid.getnode()
 
 The activation key and hardware identifier are then combined and hashed using SHA-256.
 
-Master Activation Key + Hardware ID │ ▼ SHA-256 │ ▼ License Hash │ ▼ app_license.lic
+Master Activation Key + Hardware ID | v SHA-256 | v License Hash | v app_license.lic
 
 
 The resulting hash is stored in:
@@ -236,11 +241,11 @@ If a valid match is found, the device is considered permanently unlocked.
 
 ---
 
-# 🖥️ User Interface
+## User Interface
 
 The application contains two main interfaces.
 
-## 🔑 Authentication Window
+### Authentication Window
 
 The authentication window includes:
 
@@ -253,9 +258,7 @@ The authentication window includes:
 
 The interface uses a dark theme with cyan, green, and red visual indicators.
 
----
-
-## 🏠 Main Application Window
+### Main Application Window
 
 After successful authentication, the main application displays:
 
@@ -272,9 +275,9 @@ The main application currently acts as a foundation for additional project funct
 
 ---
 
-# 📸 Screenshots
+## Screenshots
 
-## 🔐 Authentication Window
+### Authentication Window
 
 The authentication window displays the randomly generated security token and provides a field for entering the authentication passkey.
 
@@ -282,7 +285,7 @@ The authentication window displays the randomly generated security token and pro
 
 ---
 
-## ✅ Authentication Success
+### Authentication Success
 
 After entering the correct passkey, the application displays a successful authentication message.
 
@@ -290,7 +293,7 @@ After entering the correct passkey, the application displays a successful authen
 
 ---
 
-## 🏠 Main Application
+### Main Application
 
 After successful authentication, the main application interface is displayed.
 
@@ -298,7 +301,7 @@ After successful authentication, the main application interface is displayed.
 
 ---
 
-# ⚙️ Main Functions
+## Main Functions
 
 | Function | Description |
 |---|---|
@@ -313,7 +316,7 @@ After successful authentication, the main application interface is displayed.
 
 ---
 
-# ⚙️ Configuration
+## Configuration
 
 The main authentication configuration is defined using variables such as:
 
@@ -324,20 +327,16 @@ AUTHFILE = "authstatus.txt"
 LICENSEFILE = "applicense.lic"
 
 
----
-
-## 🔑 MASTER_KEY
+### MASTER_KEY
 
 MASTERKEY = "SECRETKEY_123"
 
 
 The master key is used during the generation of the daily authentication passkey.
 
-> **Security note:** In a production application, secrets should not be hard-coded directly into the source code.
+> For a production application, secrets should not be hard-coded directly into the source code.
 
----
-
-## 📅 AUTH_FILE
+### AUTH_FILE
 
 AUTHFILE = "authstatus.txt"
 
@@ -349,9 +348,7 @@ Example:
 2026-10-05
 
 
----
-
-## 📜 LICENSE_FILE
+### LICENSE_FILE
 
 LICENSEFILE = "applicense.lic"
 
@@ -362,32 +359,30 @@ The actual activation key is not directly stored in the license file.
 
 ---
 
-# 📁 Generated Files
+## Generated Files
 
-## `auth_status.txt`
+### `auth_status.txt`
 
-Stores the date of the last successful daily authentication.
+This file stores the date of the last successful daily authentication.
 
 Example:
 
 2026-10-05
 
 
----
+### `app_license.lic`
 
-## `app_license.lic`
-
-Stores the SHA-256 hash generated from the master activation key and hardware identifier.
+This file stores the SHA-256 hash generated from the master activation key and hardware identifier.
 
 The actual activation key is not directly stored in the license file.
 
 ---
 
-# 🛡️ Security Considerations
+## Security Considerations
 
-This project is intended for **educational purposes** and demonstrates basic authentication and cryptographic concepts.
+This project is intended for educational purposes and demonstrates basic authentication and cryptographic concepts.
 
-It should **not** be considered a production-ready authentication system.
+It should not be considered a production-ready authentication system.
 
 The current implementation has several security limitations:
 
@@ -414,16 +409,28 @@ For a production application, a more secure architecture should be implemented u
 
 ---
 
-# 🧪 Example
+## Example
 
 When the application starts, the authentication interface provides a randomly generated security token.
 
-### Example
+Example:
 
-┌─────────────────────────────────────┐ │ SECURE AUTHENTICATOR │ │ │ │ COLLEGE MINI PROJECT │ │ // SECURE LOGIN ACCESS │ │ │ │ DAILY SECURITY TOKEN │ │ │ │ A7x@92 │ │ │ │ INPUT ACTIVATION PASSKEY: │ │ │ │ [ 482731 ] │ │ │ │ [ Verify Passkey ] │ │ │ └─────────────────────────────────────┘
+SECURE AUTHENTICATOR
+
+COLLEGE MINI PROJECT // SECURE LOGIN ACCESS
+
+DAILY SECURITY TOKEN
+
+A7x@92
+
+INPUT ACTIVATION PASSKEY:
+
+[ 482731 ]
+
+[ Verify Passkey ]
 
 
-After entering the correct authentication key:
+After entering the correct authentication key, the application displays:
 
 Daily Authentication Successful!
 
@@ -432,7 +439,7 @@ The user is then granted access to the main application.
 
 ---
 
-# ❌ Error Handling
+## Error Handling
 
 If the user enters an incorrect key, the application displays an access-denied message:
 
@@ -447,7 +454,7 @@ If the user closes the authentication window without successfully authenticating
 
 ---
 
-# ⌨️ Keyboard Support
+## Keyboard Support
 
 The authentication interface supports keyboard-based submission.
 
@@ -456,37 +463,37 @@ After entering the passkey, the user can press:
 Enter
 
 
-instead of clicking the **Verify Passkey** button.
+instead of clicking the Verify Passkey button.
 
 ---
 
-# 🔮 Future Improvements
+## Future Improvements
 
 The project can be extended with the following features:
 
-- 👤 Username and password authentication
-- 🗄️ Database integration
-- 🌐 Server-based authentication
-- 🔒 Secure password hashing
-- 👨‍💼 Administrator dashboard
-- 📊 Login activity logging
-- ⏳ License expiration
-- ✍️ Digitally signed license files
-- 🚫 Failed-login protection
-- 📧 Email verification
-- 🔄 Password reset functionality
-- 🧪 Automated unit testing
-- 🔐 Improved secret management
-- 📦 Windows executable packaging
-- ⚙️ Application settings
-- 👥 User management
-- 📜 Authentication history
-- 🎨 Improved user interface
-- ➕ Additional application functionality
+- Username and password authentication
+- Database integration
+- Server-based authentication
+- Secure password hashing
+- Administrator dashboard
+- Login activity logging
+- License expiration
+- Digitally signed license files
+- Failed-login protection
+- Email verification
+- Password reset functionality
+- Automated unit testing
+- Improved secret management
+- Windows executable packaging
+- Additional application functionality
+- Application settings
+- User management
+- Authentication history
+- Improved user interface
 
 ---
 
-# 🎓 Academic Purpose
+## Academic Purpose
 
 This project demonstrates several Python programming concepts, including:
 
@@ -501,11 +508,11 @@ This project demonstrates several Python programming concepts, including:
 - Authentication logic
 - Conditional programming
 
-The project is suitable for a **college mini-project** demonstrating Python GUI development and basic authentication concepts.
+The project is suitable for a college mini-project demonstrating Python GUI development and basic authentication concepts.
 
 ---
 
-# ✅ Advantages
+## Advantages
 
 - Simple and easy-to-use graphical interface
 - No external dependencies
@@ -519,7 +526,7 @@ The project is suitable for a **college mini-project** demonstrating Python GUI 
 
 ---
 
-# ⚠️ Limitations
+## Limitations
 
 - Authentication data is stored locally.
 - The master key is present in the source code.
@@ -533,33 +540,33 @@ The project is suitable for a **college mini-project** demonstrating Python GUI 
 
 ---
 
-# 📊 Project Information
+## Project Information
 
 | Property | Details |
 |---|---|
-| **Project Name** | Secure Authenticator |
-| **Programming Language** | Python |
-| **GUI Framework** | Tkinter |
-| **Authentication** | SHA-256 Based |
-| **Application Type** | Desktop Application |
-| **Project Type** | College Mini Project |
-| **External Dependencies** | None |
-| **License** | Educational Use |
+| Project Name | Secure Authenticator |
+| Programming Language | Python |
+| GUI Framework | Tkinter |
+| Authentication | SHA-256 Based |
+| Application Type | Desktop Application |
+| Project Type | College Mini Project |
+| External Dependencies | None |
+| License | Educational Use |
 
 ---
 
-# 🧑‍💻 How It Works
+## How It Works
 
 The complete authentication process can be summarized as:
 
-Application Start │ ▼ Check Permanent License │ ├─────────────── Valid ───────────────► Main Application │ ▼ Check Today's Authentication │ ├─────────────── Valid ───────────────► Main Application │ ▼ Generate Random Security Token │ ▼ Combine Token + Master Key │ ▼ SHA-256 Hash │ ▼ Generate Six-Digit Passkey │ ▼ Display Authentication Window │ ▼ User Enters Passkey │ ├────────────── Correct ──────────────► Save Date │ │ │ ▼ │ Main Application │ └────────────── Incorrect ───────────► Access Denied
+Application Start | v Check Permanent License | +------------------- Valid -------------------> Main Application | v Check Today's Authentication | +------------------- Valid -------------------> Main Application | v Generate Random Security Token | v Combine Token + Master Key | v Calculate SHA-256 Hash | v Generate Six-Digit Passkey | v Display Authentication Window | v User Enters Passkey | +------------------- Correct -----------------> Save Authentication Date | | | v | Main Application | +------------------- Incorrect ---------------> Access Denied
 
 
 ---
 
-# 📌 Important Note
+## Important Note
 
-Secure Authenticator is a **college/educational mini-project** created to demonstrate authentication and licensing concepts using Python.
+Secure Authenticator is a college and educational mini-project created to demonstrate authentication and licensing concepts using Python.
 
 The implementation should not be used as-is for protecting sensitive data, commercial software, financial applications, or production authentication systems.
 
@@ -567,9 +574,9 @@ For production use, a secure server-side architecture and proper secret-manageme
 
 ---
 
-# 📄 License
+## License
 
-This project is intended for **educational and academic purposes**.
+This project is intended for educational and academic purposes.
 
 The source code may be modified and extended for:
 
@@ -581,9 +588,9 @@ The source code may be modified and extended for:
 
 ---
 
-# 🎯 Conclusion
+## Conclusion
 
-**Secure Authenticator** demonstrates how Python and Tkinter can be used to create a desktop authentication and licensing system.
+Secure Authenticator demonstrates how Python and Tkinter can be used to create a desktop authentication and licensing system.
 
 The project combines:
 
@@ -602,15 +609,15 @@ It provides a useful foundation for developing more advanced authentication and 
 
 ---
 
-## ⭐ Project Highlights
+## Project Highlights
 
-🔐 Secure Authentication 🎲 Random Security Token 🔢 Six-Digit Passkey #️⃣ SHA-256 Hashing 📅 Daily Authentication 💻 Hardware-Based Activation 📁 Local License Storage 🖥️ Tkinter GUI ⌨️ Keyboard Support 🎓 Educational Mini-Project
+Secure Authentication Random Security Token Six-Digit Passkey SHA-256 Hashing Daily Authentication Hardware-Based Activation Local License Storage Tkinter GUI Keyboard Support Educational Mini-Project
 
 
 ---
 
-## 🙌 Thank You
+## Thank You
 
-Thank you for checking out **Secure Authenticator**!
+Thank you for checking out Secure Authenticator.
 
-If you find this project useful for learning Python, Tkinter, authentication concepts, or desktop application development, feel free to explore, modify, and extend it.
+The project can be explored, modified, and extended to learn more about Python desktop application development, GUI programming, authentication concepts, and software licensing.
